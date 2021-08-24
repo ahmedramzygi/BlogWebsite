@@ -2,24 +2,20 @@
 <%- include("./partials/head.ejs") %>
 
 <body>
-  
   <%- include("./partials/nav.ejs") %>
- 
+
   <div class="blogs content">
     <h2>All Blogs</h2>
-    <!-- Adding the blogs snippets from app.js to index.js -->
-    <% if (blogs.length>0){  %> 
-      <% blogs.forEach(blog=>{ %>
-        <h3 class=" title">  <%=blog.title %>    </h3>
-        <p class="snippet"> <%=blog.snippet %> </p>
 
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
+        <h3 class="title"><%= blog.title %></h3>
+        <p class="snippet"><%= blog.Snippet %></p>
       <% }) %>
-      <% }  else{ %>
-          <p>   There are no blogs to display </p>
-      <% } %> 
-
-
-
+    <% } else { %>
+      <p>There are no blogs to display...</p>
+    <% } %>
+    
   </div>
 
   <%- include("./partials/footer.ejs") %>
