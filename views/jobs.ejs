@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js News</title>
+
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo">Node.Js News</div>
+        <%- include('./partials/head.ejs') %>
+    </header>
+
+    <div class="wrapper">
+        <div class="jobs">
+            <% if(jobs != null) { %>
+            <% jobs.forEach(function(job, index) { %>
+                <a href="/job/<%- job.id %>" class="news__card">
+                    <img src="<%- job.thumbnail_url %>" alt="<%- job.title.rendered %>">
+                    <h2><%- job.title.rendered %></h2>
+                    <p><%- job.excerpt.rendered %></p>
+                </a>
+            <% }) %>
+            <% } else { %>
+                No posts found.
+            <% } %>
+        </div>
+    </div>  
+</body>
+</html> 

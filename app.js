@@ -1,9 +1,10 @@
 const express = require('express');
-const Blog=require('./models/Blog');
-
-// express app
 const app = express();
 const mongoose=require('mongoose');
+const blogRoutes=require('./Routes/blogRoutes')
+
+
+app.use(express.urlencoded({extended:true}));
 
 // listen for requests
 app.listen(3000);
@@ -17,39 +18,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // register view engine
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 app.get('/',(req,res)=>{
   res.redirect('/blogs');
 })
 app.get('/about', (req, res) => {
   res.render('about', { title: 'About' });
 });
-app.get('/blogs',(req,res)=>{
-  Blog.find().sort({createdAt:-1})
-  .then((result)=>{
-    console.log(result);
-    res.render('index',{title: 'All Blogs',blogs:result})
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
-})
-
-app.get('/blogs/create', (req, res) => {
-  res.render('create', { title: 'Create a new blog' });
-});
-
-
-app.get('/all-blogs', (req, res) => {
-  Blog.find()
-    .then(result => {
-      res.send(result);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
-const path = require('path')
-app.use(express.static('public'));
+app.use(blogRoutes)
+// const newsRouter = require('./geo')
+// app.use('/blogs/news', newsRouter)
 
 // 404 page
 app.use((req, res) => {

@@ -19,10 +19,14 @@
   "homepage": "https://github.com/iamshaunjp/node-crash-course#readme",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "axios": "^0.21.1",
+    "create-react-app": "^4.0.3",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
     "mongoose": "^5.13.7",
-    "mongose": "0.0.2-security"
+    "mongose": "0.0.2-security",
+    "newsapi": "^2.4.1",
+    "node-fetch": "^2.6.1"
   }
 }
