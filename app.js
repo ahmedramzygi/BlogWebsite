@@ -3,7 +3,7 @@ const app = express();
 const mongoose=require('mongoose');
 const blogRoutes=require('./Routes/blogRoutes')
 
-
+const port=process.env.PORT || 4000
 app.use(express.urlencoded({extended:true}));
 
 // listen for requests
@@ -12,7 +12,7 @@ const dbURI='mongodb+srv://Ahmed:test@blog.gwbak.mongodb.net/Blog?retryWrites=tr
 //
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => app.listen(4000))// To make sure the db is connected before we start our project.
+  .then(result => app.listen(port))// To make sure the db is connected before we start our project.
   .catch(err => console.log(err));
 
 
